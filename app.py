@@ -1,8 +1,9 @@
 import json
 import wikipedia
-from flask import Flask
+from flask import Flask, request
 from lxml import html
 import requests
+import Algorithmia
 
 app = Flask(__name__)
 
@@ -14,8 +15,10 @@ def index():
 def static_path(path):
         return app.send_static_file(path)
 
+# A Hard Coded JSON Object
 @app.route('/stuff')
 def stuff():
+
         contents= {
                 'image': 'imageURL',
                 'sumary': 'wikipediasumary',
@@ -30,7 +33,23 @@ def stuff():
         }
         return json.dumps(contents)
 
+# Scrape Testing
 @app.route('/scrape')
 def scrape():
         return "Scrape testing page."
+
+# Summarize Testing
+@app.route('/summary', methods=['GET'])
+def summary():
+        query = request.args.get('q')
+        input = wikipedia.WikipediaPage(title=query).summary
+        client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
+        algo = client.algo('nlp/Summarizer/0.1.2')
+        contents ={
+                'summary': algo.pipe(input)
+        }
+        return json.dumps(contents)
+
 app.run(debug=True)
+
+

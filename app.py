@@ -1,7 +1,7 @@
 import json
 import wikipedia
 from flask import Flask
-# from lxml import html
+from lxml import html
 import requests
 
 app = Flask(__name__)

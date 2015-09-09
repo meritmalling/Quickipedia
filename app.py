@@ -43,9 +43,24 @@ def scrape():
 def summary():
         query = request.args.get('q')
         input = wikipedia.WikipediaPage(title=query).summary
+        image = wikipedia.WikipediaPage(title=query).images[0]
         client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
         algo = client.algo('nlp/Summarizer/0.1.2')
         contents ={
+                'image': image,
+                'summary': algo.pipe(input)
+        }
+        return json.dumps(contents)
+
+@app.route('/random', methods=['GET'])
+def random():
+        query = wikipedia.random(pages=1)
+        input = wikipedia.WikipediaPage(title=query).summary
+        image = wikipedia.WikipediaPage(title=query).images[0]
+        client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
+        algo = client.algo('nlp/Summarizer/0.1.2')
+        contents ={
+                'image': image,
                 'summary': algo.pipe(input)
         }
         return json.dumps(contents)

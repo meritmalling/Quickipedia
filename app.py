@@ -1,6 +1,8 @@
 import json
 import wikipedia
 from flask import Flask
+from lxml import html
+import requests
 
 app = Flask(__name__)
 
@@ -14,7 +16,21 @@ def static_path(path):
 
 @app.route('/stuff')
 def stuff():
-        query='Queen Elizabeth II'
-        return wikipedia.summary(query, sentences=2)
+        contents= {
+                'image': 'imageURL',
+                'sumary': 'wikipediasumary',
+                'sections': [
+                        {'section1': 'section1summary'},
+                        {'section2': 'section2summary'},
+                        {'section3': 'section3summary'},
+                        {'section4': 'section4summary'},
+                        {'section5': 'section5summary'},
+                        {'section6': 'section6summary'},
+                        ]
+        }
+        return json.dumps(contents)
 
+@app.route('/scrape')
+def scrape():
+        return "Scrape testing page."
 app.run(debug=True)

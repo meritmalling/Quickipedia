@@ -1,5 +1,5 @@
 body{
-  padding: 2em;
+  padding: 2.5em;
   font-family: 'Josefin Sans', sans-serif;
   color: #fff;
   background-color: #222;
@@ -11,8 +11,8 @@ a:hover {
 }
 .status {
   font-size: 1.5em;
-  margin: 2em;
-  text-align: center;;
+  margin: 0em 2em 2em 0em;
+  text-align: center;
 }
 #search-form-group {
   display: block;
@@ -22,13 +22,13 @@ a:hover {
   margin-top: 1em;
 }
 .error {
-  text-align: center;
-  margin: 0 auto;
+  margin: 1.5em 0 .5em;
   display: block;
   font-size: 1.5em;
+  color: rgba(255,110,66,.8);
 }
 .search-form {
-  margin: 2em 0 1em 0;
+  margin: 2.5em 0 1em 0;
 }
 .search-btn {
   margin-right: 1em;
@@ -85,7 +85,7 @@ h2 {
   width: 200px;
   display: block;
   margin: 1em;
-  box-shadow: 0px 0px  5px #999;
+  /*box-shadow: 0px 0px  5px #999;*/
   border-radius: 2px;
   float: right;
 }

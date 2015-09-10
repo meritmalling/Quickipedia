@@ -1,7 +1,6 @@
 import json
 import wikipedia
 from flask import Flask, request
-from lxml import html
 import requests
 import Algorithmia
 
@@ -18,7 +17,6 @@ def static_path(path):
 # A Hard Coded JSON Object
 @app.route('/stuff')
 def stuff():
-
         contents= {
                 'image': 'imageURL',
                 'sumary': 'wikipediasumary',
@@ -38,7 +36,7 @@ def stuff():
 def scrape():
         return "Scrape testing page."
 
-# Summarize Testing
+# Summarize
 @app.route('/summary', methods=['GET'])
 def summary():
         query = request.args.get('q')
@@ -52,6 +50,7 @@ def summary():
         }
         return json.dumps(contents)
 
+# Random Summary
 @app.route('/random', methods=['GET'])
 def random():
         query = wikipedia.random(pages=1)

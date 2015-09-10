@@ -6,8 +6,9 @@ module.exports = React.createClass({
     return (
       <div className={"search-result " + hide}>
         <h2>{this.props.data.title} </h2>
-        <div>{this.props.data.summary} </div>
         <img src={this.props.data.image} />
+        <div>{this.props.data.summary} </div>
+        <div className="clearfix"></div>
       </div>
     )
   }

@@ -13,7 +13,7 @@ var TuneSearch = React.createClass({
     };
   },
   wikiSearch: function(value){
-    this.setState({searchTerm: value});
+    this.setState({searchTerm: value,status: 'Let me take a few seconds to summarize that for you...'});
     console.log('value is', value);
     // console.log('search term is', this.state.searchTerm);
 
@@ -38,7 +38,7 @@ var TuneSearch = React.createClass({
     return (
       <div className="row">
         <Header />
-        <div className="search-area col-xs-6 col-xs-offset-3">
+        <div className="search-area col-xs-8 col-xs-offset-2">
           <SearchForm onUpdate={this.wikiSearch} />
           <span className="status">{this.state.status}</span>
           <SearchResult data={this.state.results} />

@@ -65,7 +65,7 @@ a:hover {
 .search-result {
   border: 1px solid #FF6E42;
   margin: 1em auto;
-  padding: .5em 1em 1em 1.5em;
+  padding: .5em 1em 1.5em 1.5em;
   background-color: #fff;
   color: #222;
   border-radius: 4px;
@@ -84,7 +84,7 @@ h2 {
 .search-result img {
   width: 200px;
   display: block;
-  margin: 1em;
+  margin: 2em 1em 1em 1.5em;
   /*box-shadow: 0px 0px  5px #999;*/
   border-radius: 2px;
   float: right;

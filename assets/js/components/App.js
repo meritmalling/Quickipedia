@@ -5,15 +5,17 @@ var SearchResult = require('./SearchResult');
 
 var TuneSearch = React.createClass({
   getInitialState: function(){
+    this.wikiSearch(false);
     return {
-      searchTerm:'',
-      results: {}
+      searchTerm:'superman',
+      results: {},
+      status: 'Let me take a few seconds to summarize that for you...'
     };
   },
   wikiSearch: function(value){
     this.setState({searchTerm: value});
     console.log('value is', value);
-    console.log('search term is', this.state.searchTerm);
+    // console.log('search term is', this.state.searchTerm);
 
     var self = this;
     var ajax = new XMLHttpRequest();
@@ -21,7 +23,7 @@ var TuneSearch = React.createClass({
       try {
         var data = JSON.parse(this.responseText);
         console.log(data)
-        self.setState({results:data});
+        self.setState({results:data,status:''});
       } catch(e) {
         self.setState({results:{}});
       }
@@ -36,8 +38,9 @@ var TuneSearch = React.createClass({
     return (
       <div className="row">
         <Header />
-        <div className="col-xs-6 col-xs-offset-3">
+        <div className="search-area col-xs-6 col-xs-offset-3">
           <SearchForm onUpdate={this.wikiSearch} />
+          <span className="status">{this.state.status}</span>
           <SearchResult data={this.state.results} />
           <em className="error animated zoomInUp">{this.state.results.msg}</em>
         </div>

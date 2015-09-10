@@ -1,12 +1,19 @@
 body{
-  font-family: 'Muli', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #fff;
+  background-color: #222;
+  font-size: 1.2em;
+  background-image: url('../img/dark_leather.png')
 }
-
+.status {
+  font-size: 1.5em;
+  margin: 2em;
+  text-align: center;;
+}
 #search-form-group {
   display: block;
   text-align: center;
 }
-
 #container {
   margin-top: 1em;
 }
@@ -14,35 +21,31 @@ body{
   text-align: center;
   margin: 0 auto;
   display: block;
-
 }
 .search-form {
-  margin: 1em;
+  margin: 2em 0 1em 0;
 }
-
 .search-btn {
   margin-right: 1em;
   color: #fff;
-  background-color: #FF8300;
+  background-color: #FF0B35;
   transition: all 0.3s ease;
 }
 .search-btn:hover,
 .search-btn:active,
 .search-btn:focus {
-  background-color: #F87204;
-  border-color: #FF8300;
-  /*color: #000;*/
+  background-color: #B20427;
+  border-color: #940320;
 }
 .search-btn,
 .random-search {
   border-radius: 0px 0px 0px 0px;
-  border: 1px solid #FF8300;
+  border: 1px solid #FF0B35;
   font-size: 1.5em;
-  /*background-color: rgba(10,19,191,.5)*/
 }
 .random-search {
-  border: 1px solid #F87204;
-  color: #F87204;
+  border: 1px solid #FF0B35;
+  color: #FF305C;
   transition: all 0.3s ease;
   background-color: transparent;
 }
@@ -50,31 +53,40 @@ body{
 .random-search:hover,
 .random-search:active,
 .random-search:focus {
-  background-color: rgba(206,59,32,.1);
-  color: #444;
+  background-color: rgba(255,11,63,.1);
+  color: #FF496E;
+  border-color: #FF305C;
 }
 .search-result {
-  border-bottom: 2px solid #FF8F19;
-  /*border: 1px solid #444;*/
-
-  margin: 2em auto;
+  border: 1px solid #FF305C;
+  margin: 1em auto;
   padding: 1em;
-  /*background-color: #777;*/
+  background-color: #fff;
+  color: #222;
+  border-radius: 4px;
+}
+.search-result div {
+  font-size: 1.6em;
+}
+.hide {
+  display: none;
+}
+h2 {
+  color: #0084B2;
 }
 .search-result img {
   width: 300px;
   display: block;
-  margin: 1em auto;
+  margin: 2em auto;
   box-shadow: 0px 0px  5px #999;
+  border-radius: 2px;
 }
 .search-text {
   margin-right: 1em;
   font-size: 1.5em;
   padding: 1em;
-  /*text-align: center;*/
   border-radius: 30px 0px 0px 30px;
 }
-
 .tagline {
   font-style: italic;
   margin-top: 1em;

@@ -1,6 +1,6 @@
 # Quickipedia
 
-Sometimes you don't have time to through an entire Wikipedia article, or, let's be honest, even the summary. Quickipedia summarizes the summary!
+Sometimes you don't have time to read through an entire Wikipedia article, or, let's be honest, even the summary. Quickipedia summarizes the summary!
 
 ## Technologies
 

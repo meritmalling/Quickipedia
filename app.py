@@ -3,7 +3,9 @@ import wikipedia
 from flask import Flask, request
 import requests
 import Algorithmia
+import os
 
+api_key = os.environ['KEY']
 app = Flask(__name__)
 
 @app.route('/')
@@ -44,12 +46,13 @@ def summary():
                 input = wikipedia.WikipediaPage(title=query).summary
                 title = wikipedia.WikipediaPage(title=query).title
                 image = wikipedia.WikipediaPage(title=query).images[0]
-                client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
+                client = Algorithmia.client('Simple simR+{}'.format(api_key))
                 algo = client.algo('nlp/Summarizer/0.1.2')
                 contents ={
                         'image': image,
                         'title': title,
-                        'summary': algo.pipe(input)
+                        'summary': algo.pipe(input),
+                        'link': 'https://en.wikipedia.org/wiki/{}'.format(query)
                 }
         except:
                 return json.dumps({
@@ -64,12 +67,13 @@ def random():
         input = wikipedia.WikipediaPage(title=query).summary
         title = wikipedia.WikipediaPage(title=query).title
         image = wikipedia.WikipediaPage(title=query).images[0]
-        client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
+        client = Algorithmia.client('Simple simR+{}'.format(api_key))
         algo = client.algo('nlp/Summarizer/0.1.2')
         contents ={
                 'image': image,
                 'title': title,
-                'summary': algo.pipe(input)
+                'summary': algo.pipe(input),
+                'link': 'https://en.wikipedia.org/wiki/{}'.format(wikipedia.random(pages=1))
         }
         return json.dumps(contents)
 

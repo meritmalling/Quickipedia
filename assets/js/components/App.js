@@ -1,7 +1,7 @@
 var React = require('react');
 var SearchForm = require('./SearchForm');
-var RandomSearch = require('./RandomSearch');
-
+var Header = require('./Header');
+var SearchResult = require('./SearchResult');
 
 var TuneSearch = React.createClass({
   getInitialState: function(){
@@ -10,8 +10,11 @@ var TuneSearch = React.createClass({
       results: {}
     };
   },
-  customSearch: function(value){
+  wikiSearch: function(value){
     this.setState({searchTerm: value});
+    console.log('value is', value);
+    console.log('search term is', this.state.searchTerm);
+
     var self = this;
     var ajax = new XMLHttpRequest();
     ajax.addEventListener('load',function(){
@@ -23,39 +26,20 @@ var TuneSearch = React.createClass({
         self.setState({results:{}});
       }
     });
-    ajax.open('GET','/summary?q=' + value);
+    console.log('value is', value === true);
+
+    var url = (typeof value === 'string') ? '/summary?q=' + value : '/random';
+    ajax.open('GET',url);
     ajax.send();
-  },
-  randomSearch: function(){
-    console.log('random');
-    var self = this;
-    var ajax = new XMLHttpRequest();
-    ajax.addEventListener('load',function(){
-      try {
-        var data = JSON.parse(this.responseText);
-        console.log(data)
-        self.setState({results:data});
-      } catch(e) {
-        self.setState({results:{}});
-      }
-    });
-    ajax.open('GET','/random');
-    ajax.send();
-  },
-  test: function() {
-    alert('test');
   },
   render: function(){
     return (
       <div className="row">
-        <h1 className="text-center">Quickipedia</h1>
+        <Header />
         <div className="col-xs-6 col-xs-offset-3">
-          <SearchForm onUpdate={this.customSearch} />
-          <RandomSearch onClick={this.test} />
-          <div>{this.state.results.image}</div>
-          <h2>{this.state.results.title} </h2>
-          <div> {this.state.results.summary} </div>
-
+          <SearchForm onUpdate={this.wikiSearch} />
+          <SearchResult data={this.state.results} />
+          <em className="error animated zoomInUp">{this.state.results.msg}</em>
         </div>
       </div>
     );

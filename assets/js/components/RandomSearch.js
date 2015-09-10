@@ -1,19 +1,12 @@
 var React = require('react');
 
 module.exports = React.createClass({
-  // propTypes:{
-  //   onUpdate: React.PropTypes.func.isRequired
-  // },
-  // update: function(e){
-  //   e.preventDefault();
-  //   var value = this.refs.textInput.getDOMNode().value;
-  //   this.props.onUpdate(value);
-  // },
-  render: function(){
+  render: function() {
     return (
-      <div>
-        <button className="btn btn-warning">random</button>
-      </div>
+      <span>
+        <button onClick={this.props.onClick} className="btn btn-warning random-search">random</button>
+      </span>
     )
   }
-});
+
+})

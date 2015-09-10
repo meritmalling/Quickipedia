@@ -1,7 +1,6 @@
 import json
 import wikipedia
 from flask import Flask, request
-from lxml import html
 import requests
 import Algorithmia
 

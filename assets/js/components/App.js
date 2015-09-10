@@ -48,7 +48,7 @@ var TuneSearch = React.createClass({
     return (
       <div className="row">
         <Header />
-        <div className="search-area col-xs-8 col-xs-offset-2">
+        <div className="search-area col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
           <SearchForm onUpdate={this.wikiSearch} />
           <em className="error">{this.state.msg}</em>
           <span className="status">{this.state.status}</span>

@@ -11,9 +11,11 @@ module.exports = React.createClass({
   },
   render: function(){
     return (
-      <form onSubmit={this.update} className="form">
-        <input ref="textInput" type="text" placeholder="Search Wikipedia" className="form-control" />
-        <input type="submit" value="search" className="btn btn-primary" />
+      <form onSubmit={this.update} className="form search-form form-inline">
+        <div className="form-group">
+          <input ref="textInput" autofocus type="text" placeholder="Search Wikipedia" className="form-control search-text" />
+          <input type="submit" value="search" className="btn btn-primary" />
+        </div>
       </form>
     )
   }

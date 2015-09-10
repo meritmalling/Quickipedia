@@ -9,7 +9,7 @@ var TuneSearch = React.createClass({
     return {
       searchTerm:'superman',
       results: {},
-      status: 'Let me take a few seconds to summarize that for you...'
+      status: 'What can we learn about today...'
     };
   },
   wikiSearch: function(value){

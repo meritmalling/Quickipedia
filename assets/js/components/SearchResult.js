@@ -5,7 +5,7 @@ module.exports = React.createClass({
     var hide = 'nothing'
     return (
       <div className={"search-result " + hide}>
-        <h2><a title="Read the details on Wikipedia" href={this.props.data.link}>{this.props.data.title}</a></h2>
+        <h2><a target="_blank" title="Read the details on Wikipedia" href={this.props.data.link}>{this.props.data.title}</a></h2>
         <img src={this.props.data.image} />
         <div>{this.props.data.summary} </div>
         <div className="clearfix"></div>

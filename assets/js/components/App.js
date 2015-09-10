@@ -6,7 +6,7 @@ var SearchResult = require('./SearchResult');
 var TuneSearch = React.createClass({
   getInitialState: function(){
     return {
-      searchTerm:'superman',
+      searchTerm:'',
       results: {},
       status: 'What can we learn about today...',
       msg: ''
@@ -28,10 +28,11 @@ var TuneSearch = React.createClass({
       try {
         var data = JSON.parse(this.responseText);
         console.log(data)
-        self.setState({results:data,status:data.msg});
+        self.setState({results:data,status:data.msg,msg:''});
         if (data.msg) {
           console.log('logged');
-          this.wikiSearch(false);
+          self.setState({msg: "Sorry, we couldn't find a Wikipedia article matching your search. But maybe you'll find this interesting..."})
+          self.wikiSearch(false);
         }
       } catch(e) {
         self.setState({results:{},status:"Sorry, we couldn't find a Wikipedia article matching your search."});
@@ -49,8 +50,8 @@ var TuneSearch = React.createClass({
         <Header />
         <div className="search-area col-xs-8 col-xs-offset-2">
           <SearchForm onUpdate={this.wikiSearch} />
+          <em className="error">{this.state.msg}</em>
           <span className="status">{this.state.status}</span>
-          <em className="error"></em>
           <SearchResult data={this.state.results} />
         </div>
       </div>

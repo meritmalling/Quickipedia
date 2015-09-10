@@ -41,11 +41,13 @@ def scrape():
 def summary():
         query = request.args.get('q')
         input = wikipedia.WikipediaPage(title=query).summary
+        title = wikipedia.WikipediaPage(title=query).title
         image = wikipedia.WikipediaPage(title=query).images[0]
         client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
         algo = client.algo('nlp/Summarizer/0.1.2')
         contents ={
                 'image': image,
+                'title': title,
                 'summary': algo.pipe(input)
         }
         return json.dumps(contents)
@@ -55,11 +57,13 @@ def summary():
 def random():
         query = wikipedia.random(pages=1)
         input = wikipedia.WikipediaPage(title=query).summary
+        title = wikipedia.WikipediaPage(title=query).title
         image = wikipedia.WikipediaPage(title=query).images[0]
         client = Algorithmia.client('Simple simR+nQkQw61vI6qiGu6A7wTfaG1')
         algo = client.algo('nlp/Summarizer/0.1.2')
         contents ={
                 'image': image,
+                'title': title,
                 'summary': algo.pipe(input)
         }
         return json.dumps(contents)

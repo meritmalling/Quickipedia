@@ -1,5 +1,7 @@
 # Quickipedia
 
+[quickipedia.herokuapp.com](quickipedia.herokuapp.com)
+
 Sometimes you don't have time to read through an entire Wikipedia article, or, let's be honest, even the summary. Quickipedia summarizes the summary!
 
 ## Technologies

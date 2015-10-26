@@ -3,7 +3,7 @@ var SearchForm = require('./SearchForm');
 var Header = require('./Header');
 var SearchResult = require('./SearchResult');
 
-var TuneSearch = React.createClass({
+var Search = React.createClass({
   getInitialState: function(){
     return {
       searchTerm:'',
@@ -17,20 +17,20 @@ var TuneSearch = React.createClass({
   },
   wikiSearch: function(value){
     this.setState({searchTerm: value,status: 'Let me take a few seconds to summarize that for you...'});
-    console.log('value is', value);
-    console.log('message', this.state.msg);
+    // console.log('value is', value);
+    // console.log('message', this.state.msg);
 
-    console.log('search term is', this.state.searchTerm);
+    // console.log('search term is', this.state.searchTerm);
 
     var self = this;
     var ajax = new XMLHttpRequest();
     ajax.addEventListener('load',function(){
       try {
         var data = JSON.parse(this.responseText);
-        console.log(data)
+        // console.log(data)
         self.setState({results:data,status:data.msg,msg:''});
         if (data.msg) {
-          console.log('logged');
+          // console.log('logged');
           self.setState({msg: "Sorry, we couldn't find a Wikipedia article matching your search. But maybe you'll find this interesting..."})
           self.wikiSearch(false);
         }
@@ -59,5 +59,5 @@ var TuneSearch = React.createClass({
   }
 });
 
-module.exports = TuneSearch;
+module.exports = Search;
 

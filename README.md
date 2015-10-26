@@ -1,5 +1,7 @@
 # Quickipedia
 
+[quickipedia.herokuapp.com](quickipedia.herokuapp.com)
+
 When two web development students collaborate for a one day hackaton you get Quickipedia!
 
 Sometimes you don't have time to read through an entire Wikipedia article, or, let's be honest, even the summary. Quickipedia summarizes the summary!

@@ -6,13 +6,13 @@ module.exports = React.createClass({
     onUpdate: React.PropTypes.func.isRequired
   },
   update: function(e){
-    console.log('update')
+    // console.log('update')
     e.preventDefault();
     var value = this.refs.textInput.getDOMNode().value;
     this.props.onUpdate(value);
   },
   random: function(e){
-    console.log('random');
+    // console.log('random');
     e.preventDefault();
     var value = false;
     this.props.onUpdate(value);

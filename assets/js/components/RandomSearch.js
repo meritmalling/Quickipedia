@@ -1,5 +1,6 @@
 var React = require('react');
 
+// Handles button to trigger random search
 module.exports = React.createClass({
   render: function() {
     return (

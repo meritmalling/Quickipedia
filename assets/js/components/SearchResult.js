@@ -1,8 +1,9 @@
 var React = require('react');
 
+// displays results
 module.exports = React.createClass({
   render: function() {
-    var hide = 'nothing'
+    var hide = 'nothing';
     return (
       <div className={"search-result " + hide}>
         <h2><a target="_blank" title="Read the details on Wikipedia" href={this.props.data.link}>{this.props.data.title}</a></h2>

@@ -1,5 +1,6 @@
 var React = require('react');
 
+// Basic header for page
 module.exports = React.createClass({
   render: function() {
     return (

@@ -3,43 +3,43 @@ var SearchForm = require('./SearchForm');
 var Header = require('./Header');
 var SearchResult = require('./SearchResult');
 
-var TuneSearch = React.createClass({
+var Search = React.createClass({
   getInitialState: function(){
     return {
       searchTerm:'',
       results: {},
+      // Status tells what is happening
       status: 'What can we learn about today...',
+      // Optional msg to indicate that something unexpected happened (no results, etc)
       msg: ''
     };
   },
   componentDidMount: function() {
     this.wikiSearch(false);
   },
+  // conducts search for article to summarize, either specific or random (no result reverts to random)
   wikiSearch: function(value){
     this.setState({searchTerm: value,status: 'Let me take a few seconds to summarize that for you...'});
-    console.log('value is', value);
-    console.log('message', this.state.msg);
-
-    console.log('search term is', this.state.searchTerm);
-
+    // finding a way to use "bind" here would be better, but for now, set "self" to store "this"
     var self = this;
     var ajax = new XMLHttpRequest();
+    // specifies what happens when data has loaded
     ajax.addEventListener('load',function(){
       try {
         var data = JSON.parse(this.responseText);
-        console.log(data)
         self.setState({results:data,status:data.msg,msg:''});
         if (data.msg) {
-          console.log('logged');
+          // response when user enters text that does not match an exact Wikipedia result
           self.setState({msg: "Sorry, we couldn't find a Wikipedia article matching your search. But maybe you'll find this interesting..."})
+          // restarts search, but for random article
           self.wikiSearch(false);
         }
       } catch(e) {
+        // in case of any unexpected errors
         self.setState({results:{},status:"Sorry, we couldn't find a Wikipedia article matching your search."});
       }
     });
-    // console.log('value is', value === true);
-
+    // determines whether to try to get random or specific article; api data from backend is delivered to these routes
     var url = (typeof value === 'string') ? '/summary?q=' + value : '/random';
     ajax.open('GET',url);
     ajax.send();
@@ -59,5 +59,5 @@ var TuneSearch = React.createClass({
   }
 });
 
-module.exports = TuneSearch;
+module.exports = Search;
 
